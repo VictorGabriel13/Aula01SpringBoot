@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Eventos</title>
@@ -7,10 +7,10 @@
 </head>
 <body>
 <h1>Adicionar Eventos</h1>
-<form action="">
+<form action="/events" method="post">
    <div>
        <label>Nome: </label>
-           <input type="text" name="nome" placeholder="Informe o nome do evento">
+           <input type="text" name="name" placeholder="Informe o nome do evento">
    </div>
 
     <div>
@@ -20,12 +20,12 @@
 
     <div>
         <label>Data: </label>
-        <input type="date" name="data" placeholder="Informe a data do evento">
+        <input type="date" name="date" placeholder="Informe a data do evento">
     </div>
 
     <div>
         <label>Horário: </label>
-        <input type="datetime-local" name="horario" placeholder="Informe o horario do evento">
+        <input type="time" name="hour" placeholder="Informe o horario do evento">
     </div>
 
     <div>

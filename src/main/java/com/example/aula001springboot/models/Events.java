@@ -4,10 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Events {
@@ -16,8 +12,8 @@ public class Events {
     private Long id;
     private String name;
     private String local;
-    private LocalDateTime hour;
-    private LocalDate date;
+    private String hour;
+    private String date;
 
     public Long getId() {
         return id;
@@ -39,19 +35,30 @@ public class Events {
         this.local = local;
     }
 
-    public LocalDateTime getHour() {
+    public String getHour() {
         return hour;
     }
 
-    public void setHour(LocalDateTime hour) {
+    public void setHour(String hour) {
         this.hour = hour;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Events{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", local='" + local + '\'' +
+                ", hour=" + hour +
+                ", date=" + date +
+                '}';
     }
 }
