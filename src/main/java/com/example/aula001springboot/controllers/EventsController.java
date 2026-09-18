@@ -1,6 +1,8 @@
 package com.example.aula001springboot.controllers;
 
+import com.example.aula001springboot.models.Convidado;
 import com.example.aula001springboot.models.Events;
+import com.example.aula001springboot.repositories.ConvidadoRepositories;
 import com.example.aula001springboot.repositories.EventsRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,11 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/events")
 public class EventsController {
+
     @Autowired
     private EventsRepositories er;
+    @Autowired
+    private ConvidadoRepositories cr;
 
     @RequestMapping("/form")
     public String form() {
@@ -56,6 +61,21 @@ public class EventsController {
         mv.setViewName("/events/detalhes");
         mv.addObject("event", event);
 
+        List<Convidado> convidados = cr.findByEvento(event);
+        mv.addObject("convidados", convidados);
+
         return mv;
+    }
+    @PostMapping("/{idEvento}")
+    public String salvarConvidado(@PathVariable Long idEvento, Convidado convidado) {
+       Optional<Events> opt = er.findById(idEvento);
+
+       if (opt.isEmpty()) {
+           return "redirect:/events";
+       }
+       Events evento = opt.get();
+       convidado.setEvento(evento);
+       cr.save(convidado);
+       return "redirect:/events/{idEvento}";
     }
 }
