@@ -10,36 +10,37 @@
 </head>
 
 <body>
-    <div th:replace="~{menu :: menu}"></div>
-    <div class="container">
-        <h1>Adicionar Eventos</h1>
-        <form action="/events" method="post">
-            <div>
-                <label>Nome: </label>
-                <input type="text" name="name" placeholder="Informe o nome do evento">
-            </div>
+<div th:replace="~{menu :: menu}"></div>
+<div class="container">
+    <h1>Adicionar Eventos</h1>
+    <form action="/events" method="post">
+        <input type="hidden" name="id" th:value="${evento?.id}">
+        <div>
+            <label>Nome: </label>
+            <input type="text" name="name" th:value="${evento?.name}" placeholder="Informe o nome do evento">
+        </div>
 
-            <div>
-                <label>Local: </label>
-                <input type="text" name="local" placeholder="Informe o local do evento">
-            </div>
+        <div>
+            <label>Local: </label>
+            <input type="text" name="local" th:value="${evento?.local}" placeholder="Informe o local do evento">
+        </div>
 
-            <div>
-                <label>Data: </label>
-                <input type="date" name="date" placeholder="Informe a data do evento">
-            </div>
+        <div>
+            <label>Data: </label>
+            <input type="date" name="date" th:value="${evento?.date}" placeholder="Informe a data do evento">
+        </div>
 
-            <div>
-                <label>Horário: </label>
-                <input type="time" name="hour" placeholder="Informe o horario do evento">
-            </div>
+        <div>
+            <label>Horário: </label>
+            <input type="time" name="hour" th:value="${evento?.hour}" placeholder="Informe o horario do evento">
+        </div>
 
-            <div>
-                <button class="waves-effect waves-light btn" type="submit">Confirmar Evento</button>
-                <button class="waves-effect waves-light btn" type="reset">Limpar Formulário</button>
-            </div>
-        </form>
-    </div>
+        <div>
+            <button class="waves-effect waves-light btn" type="submit">Confirmar Evento</button>
+            <button class="waves-effect waves-light btn" type="reset">Limpar Formulário</button>
+        </div>
+    </form>
+</div>
 </body>
 
 </html>

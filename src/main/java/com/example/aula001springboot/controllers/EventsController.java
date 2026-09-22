@@ -79,6 +79,26 @@ public class EventsController {
        return "redirect:/events/{idEvento}";
     }
 
+    @GetMapping("/{id}/selecionar")
+    public ModelAndView selecionarEvento(@PathVariable Long id) {
+
+        ModelAndView mv = new ModelAndView();
+
+        Optional<Events> opt = er.findById(id);
+
+        if (opt.isEmpty()) {
+            mv.setViewName("redirect:/events");
+            return mv;
+        }
+
+        Events evento = opt.get();
+
+        mv.setViewName("events/formEvents");
+        mv.addObject("evento", evento);
+
+        return mv;
+    }
+
     @GetMapping("/{id}/remover")
     public String apagarEVento(@PathVariable Long id) {
 
