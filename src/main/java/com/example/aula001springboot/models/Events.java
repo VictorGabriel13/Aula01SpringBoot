@@ -15,6 +15,9 @@ public class Events {
     private String hour;
     private String date;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }
